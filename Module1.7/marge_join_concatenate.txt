@@ -1,0 +1,166 @@
+Merge, Join, Concatenate
+
+    📌 কেন দরকার?
+
+            👉 Real life-এ data এক জায়গায় থাকে না
+            👉 আলাদা আলাদা table combine করতে হয়
+
+    📌 Example Data
+                    import pandas as pd
+
+                    df1 = pd.DataFrame({
+                        "ID": [1, 2, 3],
+                        "Name": ["A", "B", "C"]
+                    })
+
+                    df2 = pd.DataFrame({
+                        "ID": [1, 2, 4],
+                        "Salary": [10000, 15000, 20000]
+                    })
+
+    📌 1. Merge (সবচেয়ে important) ⭐
+            👉 Common column দিয়ে join
+            result = pd.merge(df1, df2, on="ID")
+            print(result)
+
+            👉 Output:
+
+            ID Name  Salary
+            0   1    A   10000
+            1   2    B   15000
+
+    📌 Merge Types
+            👉 Inner Join (default)
+            pd.merge(df1, df2, on="ID", how="inner")
+
+            👉 শুধু matching data
+
+            👉 Left Join
+            pd.merge(df1, df2, on="ID", how="left")
+
+            👉 df1 এর সব data থাকবে
+
+            👉 Right Join
+            pd.merge(df1, df2, on="ID", how="right")
+            👉 Outer Join
+            pd.merge(df1, df2, on="ID", how="outer")
+
+            👉 সব data combine
+
+    📌 2. Concatenate (concat)
+
+            👉 vertically বা horizontally add করা
+
+            👉 Row wise
+            pd.concat([df1, df2])
+            👉 Column wise
+            pd.concat([df1, df2], axis=1)
+
+            👉 axis=1 = column
+
+                    🧭 axis বুঝার সহজ trick
+
+                                👉 axis = 0 → নিচে নিচে (Row wise)
+                                👉 axis = 1 → পাশে পাশে (Column wise)
+
+                                📌 1. Row wise (default: axis=0)
+                                pd.concat([df1, df2])
+
+                                👉 df1 এর নিচে df2 বসবে
+
+                                Example:
+                                df1        df2
+                                A B        A B
+                                1 2        5 6
+                                3 4        7 8
+
+                                👉 Output:
+
+                                A B
+                                1 2
+                                3 4
+                                5 6
+                                7 8
+                                📌 2. Column wise (axis=1)
+                                pd.concat([df1, df2], axis=1)
+
+                                👉 df1 এর পাশে df2 বসবে
+
+                                Example:
+                                df1        df2
+                                A B        C D
+                                1 2        5 6
+                                3 4        7 8
+
+                                👉 Output:
+
+                                A B C D
+                                1 2 5 6
+                                3 4 7 8
+
+    📌 3. Join (shortcut)
+    df1.join(df2, lsuffix="_left", rsuffix="_right")
+
+    👉 index দিয়ে join হয়
+
+                    Note:
+                            কেন lsuffix এবং rsuffix ব্যবহার করি?
+
+                            👉 যখন df1 এবং df2-তে একই নামের column থাকে, তখন conflict হয়
+                            👉 এই conflict এড়ানোর জন্য suffix ব্যবহার করা হয়
+
+                            🧠 Example ছাড়া বুঝা যাবে না
+                            df1:
+                            name   marks
+                            A      80
+                            B      90
+                            df2:
+                            name   marks
+                            A      85
+                            B      95
+
+                            👉 এখানে দুইটাতেই marks column আছে ❗
+
+                            ❌ যদি suffix না দাও:
+                            df1.join(df2)
+
+                            👉 ❌ Error দিবে (column overlap)
+
+                            ✅ suffix দিয়ে solve:
+                            df1.join(df2, lsuffix="_left", rsuffix="_right")
+
+                            👉 Output:
+
+                            name marks_left marks_right
+                            A    80         85
+                            B    90         95
+                            🎯 Breakdown
+                            lsuffix="_left" → df1 এর column নামের শেষে _left যোগ হবে
+                            rsuffix="_right" → df2 এর column নামের শেষে _right যোগ হবে
+
+    🎯 Mini Practice
+                import pandas as pd
+
+                df1 = pd.DataFrame({
+                    "ID": [1, 2],
+                    "Name": ["A", "B"]
+                })
+
+                df2 = pd.DataFrame({
+                    "ID": [1, 2],
+                    "Marks": [80, 90]
+                })
+
+                print(pd.merge(df1, df2, on="ID"))
+
+
+    ⚠️ Important Tips
+                merge() → সবচেয়ে বেশি use হয়
+                join করার আগে common column match আছে কিনা দেখো
+                real project এ multiple table combine করতেই হবে
+
+    📌 Summary
+                merge() → table join
+                how= → type (inner, left, right, outer)
+                concat() → add
+                join() → index-based join
