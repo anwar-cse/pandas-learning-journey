@@ -1,0 +1,77 @@
+GroupBy (Data Analysis এর Heart)
+
+    📌 GroupBy কি?
+
+    👉 GroupBy = Data কে group করে summary বের করা
+        সহজভাবে:
+            একই ধরনের data একসাথে নিয়ে calculation করা
+
+    📌 Example Data
+                    import pandas as pd
+
+                    data = {
+                        "Name": ["A", "B", "C", "D", "E"],
+                        "City": ["Dhaka", "Dhaka", "Khulna", "Khulna", "Dhaka"],
+                        "Salary": [10000, 15000, 12000, 13000, 20000]
+                    }
+
+                    df = pd.DataFrame(data)
+
+    📌 1. GroupBy Basic
+                df.groupby("City")
+                👉 এটা শুধু group বানায় (output দেখা যাবে না এখনো)
+
+    📌 2. GroupBy + Sum
+                print(df.groupby("City")["Salary"].sum())
+
+                👉 Output:
+                        Dhaka     45000
+                        Khulna    25000
+
+    📌 3. GroupBy + Mean (Average) ⭐
+                print(df.groupby("City")["Salary"].mean())
+
+    📌 4. GroupBy + Count
+                print(df.groupby("City")["Name"].count())
+                    👉 কয়জন আছে প্রতি city-তে
+
+    📌 5. Multiple Aggregation
+                print(df.groupby("City")["Salary"].agg(["sum", "mean", "max"]))
+
+                    👉 একসাথে অনেক calculation
+
+    📌 6. Multiple Column Group
+            print(df.groupby(["City", "Name"])["Salary"].sum())
+
+    📌 7. Reset Index (important)
+    result = df.groupby("City")["Salary"].sum().reset_index()
+    print(result)
+
+    👉 সুন্দর table আকারে পাবে
+
+    🎯 Mini Practice
+            import pandas as pd
+
+            data = {
+                "Dept": ["IT", "HR", "IT", "HR", "IT"],
+                "Salary": [5000, 6000, 7000, 8000, 9000]
+            }
+
+            df = pd.DataFrame(data)
+
+            print(df.groupby("Dept")["Salary"].sum())
+            print(df.groupby("Dept")["Salary"].mean())
+
+    ⚠️ Real Life Use
+            কোন department বেশি salary দিচ্ছে
+            কোন city-তে average income কত
+            কোন category-তে বেশি sales
+
+            👉 ML & Data Analysis এ GroupBy = MUST
+
+    📌 Summary
+            groupby() → group তৈরি
+            sum() → total
+            mean() → average
+            count() → সংখ্যা
+            agg() → multiple operation
