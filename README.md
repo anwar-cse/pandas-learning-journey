@@ -35,7 +35,7 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 ---
 
-## 🛠 Tools Used
+##  Tools Used
 
 - Python
 - Pandas
