@@ -1,0 +1,73 @@
+Sorting + Unique + Value Counts
+
+    📌 1. Sorting (ডাটা সাজানো)
+
+        👉 Ascending (ছোট → বড়)
+            df = df.sort_values(by="Age")
+            print(df)
+        👉 Descending (বড় → ছোট)
+            df = df.sort_values(by="Age", ascending=False)
+            print(df)
+        👉 Multiple column দিয়ে sort
+            df = df.sort_values(by=["Age", "Name"])
+
+    📌 2. Unique value বের করা
+            print(df["City"].unique())
+
+            👉 Output example:
+                        ['Dhaka' 'Khulna' 'Rajshahi']
+
+    📌 3. কয়টা unique আছে
+             print(df["City"].nunique())
+
+    📌 4. Value count (কতবার কোন value আছে) ⭐
+            print(df["City"].value_counts())
+
+            👉 Output example:
+                        Dhaka       2
+                        Khulna      1
+                        Rajshahi    1
+
+    📌 5. Normalize (percentage আকারে)
+            print(df["City"].value_counts(normalize=True))
+
+            👉 Output:
+                    Dhaka       0.50
+                    Khulna      0.25
+                    Rajshahi    0.25
+    📌 6. Top value বের করা
+            print(df["City"].value_counts().head(1))
+
+            👉 সবচেয়ে বেশি যেটা আছে
+
+    🎯 Mini Practice
+            import pandas as pd
+
+            data = {
+                "Name": ["A", "B", "C", "D", "E"],
+                "City": ["Dhaka", "Dhaka", "Khulna", "Rajshahi", "Dhaka"]
+            }
+
+            df = pd.DataFrame(data)
+
+    # value count
+            print(df["City"].value_counts())
+
+    # unique
+            print(df["City"].unique())
+
+    # sort
+            print(df.sort_values(by="Name"))
+
+    ⚠️ Real Life Use
+            কোন city-তে বেশি customer আছে
+            কোন product বেশি sell হয়
+            কোন category বেশি popular
+
+    👉 এগুলো ML-এর আগে EDA (Exploratory Data Analysis) এ use হয়
+
+    📌 Summary
+    sort_values() → sorting
+    unique() → unique value
+    nunique() → unique count
+    value_counts() → frequency
