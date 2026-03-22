@@ -1,0 +1,114 @@
+Data Cleaning (Null, Drop, Fill, Rename)
+
+    📌 1. Null (Missing Value) চেক করা
+            print(df.isnull())
+            👉 কোথায় null আছে দেখাবে (True/False)
+
+            👉 কতগুলো null আছে
+            print(df.isnull().sum())
+
+    📌 2. Null value delete করা → dropna()
+            👉 যেসব row-এ null আছে, delete:
+                                        df = df.dropna()
+            👉 column delete করা
+            df = df.dropna(axis=1)
+
+            👉 axis=1 = column
+            👉 axis=0 = row (default)
+
+            Note:
+                                🔹 dropna এর full form
+                                👉 dropna = Drop NA
+
+                                👉 এখানে
+                                Drop = বাদ দেওয়া / remove করা
+                                NA = Not Available (missing value / null)
+
+                                🔹 NA মানে কী?
+                                👉 NA = missing data
+                                👉 যেমন: None, NaN
+
+    📌 3. Null value fill করা → fillna() ⭐
+                👉 0 দিয়ে fill
+                        df["Age"] = df["Age"].fillna(0)
+                👉 mean দিয়ে fill
+                        df["Age"] = df["Age"].fillna(df["Age"].mean())
+
+                👉 ML এ এটা বেশি use হয়
+
+                👉 string দিয়ে fill
+                df["City"] = df["City"].fillna("Unknown")
+
+            Note:
+                 df["Age"] = df["Age"].fillna(df["Age"].mean()) 
+                 Why do we write df every time?
+
+                            👉 Pandas এ df হলো তোমার DataFrame object
+
+                            👉 তাই যখন তুমি কোনো column নিয়ে কাজ করো, তখন বলতে হয় 👉
+                            ➡️ “এই columnটা df এর ভিতরের”
+
+                            🔹কোডটা:
+                                    df["Age"] = df["Age"].fillna(df["Age"].mean())
+
+                            👉 এখানে ৩ বার df আছে — কারণ:
+
+                            🔹 Step by Step
+                            🔸 1. df["Age"]
+
+                            👉 DataFrame df থেকে Age column নিচ্ছে
+
+                            🔸 2. df["Age"].mean()
+
+                            👉 Age column এর average বের করছে
+
+                            🔸 3. df["Age"].fillna(...)
+
+                            👉 Age column এর null value → mean দিয়ে fill করছে
+
+                            🔸 4. df["Age"] = ...
+
+                            👉 আবার updated column টা df এর ভিতরে replace করছে
+
+                            🔹 কেন বারবার df লিখতে হয়?
+
+                            👉 কারণ Python জানে না তুমি কোন DataFrame নিয়ে কাজ করছো
+                            👉 তাই clearly বলতে হয় 👉 df["Age"]
+
+    📌 4. Column rename করা
+            df = df.rename(columns={"Name": "FullName"})
+
+    📌 5. Duplicate remove করা
+            df = df.drop_duplicates()
+
+    📌 6. Data replace করা
+            df["City"] = df["City"].replace("Dhaka", "DHAKA")
+
+    🎯 Mini Practice
+                import pandas as pd
+
+                data = {
+                    "Name": ["A", "B", None, "D"],
+                    "Age": [20, None, 25, 22]
+                }
+
+                df = pd.DataFrame(data)
+
+    # null check
+            print(df.isnull().sum())
+
+    # fill null
+            df["Age"] = df["Age"].fillna(df["Age"].mean())
+
+            print(df)
+
+    ⚠️ Important Tips
+                ML এর আগে data clean করা must
+                null থাকলে model error দিতে পারে
+                mean/median দিয়ে fill করা best practice
+    📌 Summary
+                isnull() → check
+                dropna() → delete
+                fillna() → fill
+                rename() → নাম change
+                drop_duplicates() → duplicate remove
