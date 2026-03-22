@@ -1,0 +1,89 @@
+ Apply, Map, Lambda, Custom Function
+
+    📌 1. apply() (সবচেয়ে powerful) ⭐
+
+                    👉 পুরো column-এর উপর function apply করতে
+
+                    import pandas as pd
+
+                    data = {
+                        "Name": ["A", "B", "C"],
+                        "Marks": [50, 60, 70]
+                    }
+
+                    df = pd.DataFrame(data)
+
+                    def add_bonus(x):
+                        return x + 5
+
+                    df["Marks"] = df["Marks"].apply(add_bonus)
+
+                    print(df)
+
+                    👉 Output:
+
+                    A → 55
+                    B → 65
+                    C → 75
+    📌 2. Lambda (shortcut function)
+
+    👉 ছোট function এক লাইনে
+            df["Marks"] = df["Marks"].apply(lambda x: x + 10)
+
+    📌 3. map() (simple replace / transform)
+                        df["Name"] = df["Name"].map({
+                            "A": "Anwar",
+                            "B": "Rahim",
+                            "C": "Karim"
+                        })
+
+    📌 4. Condition apply করা
+                    df["Result"] = df["Marks"].apply(lambda x: "Pass" if x >= 60 else "Fail")
+
+    📌 5. Multiple column নিয়ে কাজ (row-wise apply)
+                    def total(row):
+                        return row["Marks"] + 10
+
+                    df["Total"] = df.apply(total, axis=1)
+
+                    👉 axis=1 = row wise
+
+    📌 6. String operation ⭐
+                    df["Name"] = df["Name"].str.upper()
+
+                    👉 সব বড় হাতের অক্ষর
+
+                    df["Name"] = df["Name"].str.lower()
+
+    📌 7. Replace using function
+                    df["Marks"] = df["Marks"].apply(lambda x: x*2 if x < 60 else x)
+
+    🎯 Mini Practice
+            import pandas as pd
+
+            data = {
+                "Name": ["a", "b", "c"],
+                "Marks": [40, 70, 55]
+            }
+
+            df = pd.DataFrame(data)
+
+            # uppercase
+            df["Name"] = df["Name"].str.upper()
+
+            # result column
+            df["Result"] = df["Marks"].apply(lambda x: "Pass" if x >= 50 else "Fail")
+
+            print(df)
+
+    ⚠️ Important Tips
+                apply() → flexible কিন্তু একটু slow
+                map() → simple mapping
+                lambda → shortcut
+                string operation → .str use করো
+
+    📌 Summary
+            apply() → function apply
+            lambda → short function
+            map() → replace
+            .str → string operation
