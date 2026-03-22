@@ -8,16 +8,16 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 | Module | Topic |
 |--------|------|
-| Module 1 |(#Module1.1) Introduction to Pandas |
-| Module 2 | DataFrame Basics |
-| Module 3 | Data Selection & Filtering |
-| Module 4 | Data Cleaning |
-| Module 5 | Sorting & Value Counts |
-| Module 6 | GroupBy |
-| Module 7 | Merge & Join |
-| Module 8 | File Handling |
-| Module 9 | Apply, Map, Lambda |
-| Module 10 | Mini Project (ML Workflow) |
+| [Module1.1](Module1.1/)  Introduction to Pandas |
+| Module 1.2 | DataFrame Basics |
+| Module 1.3 | Data Selection & Filtering |
+| Module 1.4 | Data Cleaning |
+| Module 1.5 | Sorting & Value Counts |
+| Module 1.6 | GroupBy |
+| Module 1.7 | Merge & Join |
+| Module 1.8 | File Handling |
+| Module 1.9 | Apply, Map, Lambda |
+| Module 1.10 | Mini Project (ML Workflow) |
 
 ---
 
