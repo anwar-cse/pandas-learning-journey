@@ -8,7 +8,7 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 | Module | Topic |
 |--------|------|
-| Module 1 | Introduction to Pandas |
+| Module 1 |(#Module1.1) Introduction to Pandas |
 | Module 2 | DataFrame Basics |
 | Module 3 | Data Selection & Filtering |
 | Module 4 | Data Cleaning |
