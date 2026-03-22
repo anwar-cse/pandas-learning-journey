@@ -24,7 +24,7 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 ---
 
-## 🚀 What I Learned
+##  What I Learned
 
 - Data handling using Pandas
 - Data cleaning techniques
@@ -55,9 +55,9 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 ---
 
-## 📊 Mini Project
+##  Mini Project
 
-👉 **Student Result Analysis**
+ **Student Result Analysis**
 - Data cleaning
 - Feature creation
 - GroupBy analysis
@@ -65,7 +65,7 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 ---
 
-## 💡 Future Plan
+##  Future Plan
 
 - Data Visualization (Matplotlib, Seaborn)
 - Machine Learning (Scikit-learn)
@@ -73,7 +73,7 @@ This repository contains my step-by-step learning of **Python Pandas** from basi
 
 ---
 
-## 🙌 Author
+##  Author
 
 **Anwar Hossain**
 
