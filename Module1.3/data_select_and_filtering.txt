@@ -1,0 +1,140 @@
+Data Select & Filtering
+
+
+    📌 1. Column Select করা
+        👉 Single column
+            print(df["Name"])
+
+        👉 Output:
+                0    Anwar
+                1    Rahim
+                2    Karim
+                3    Sakib
+        👉 Multiple column
+             print(df[["Name", "Age"]])
+
+        👉 মনে রাখো:
+        ✔️ Double bracket [[ ]]
+            NOte:
+            Why do we use double brackets [[ ]] in pandas?
+                🔹 মূল কারণ
+                            👉 Pandas এ:
+                            [] → একটাই column (Series)
+                            [[]] → একাধিক column (DataFrame)
+
+    📌 2. Row Select করা
+            👉 index দিয়ে (loc)
+
+            print(df.loc[0])
+            👉 0 নম্বর row দেখাবে
+
+            👉 multiple row
+            print(df.loc[0:2])
+            👉 0 থেকে 2 পর্যন্ত row
+
+            👉 position দিয়ে (iloc)
+            print(df.iloc[1])
+
+            👉 2nd row (index 1)
+
+    📌 3. Specific row + column
+            print(df.loc[0, "Name"])
+
+            👉 Output:
+                     Anwar
+
+    📌 4. Filtering (Condition use করে) ⭐
+
+            👉 Age > 23
+            print(df[df["Age"] > 23])
+            👉 শুধু যাদের age 23 এর বেশি
+
+            👉 City = Dhaka
+            print(df[df["City"] == "Dhaka"])
+            👉 Multiple condition
+            print(df[(df["Age"] > 22) & (df["City"] == "Dhaka")])
+
+            👉 মনে রাখো:
+            & = AND
+            | = OR
+
+    📌 5. Column থেকে specific value
+            print(df["Name"][0])
+
+            👉 Output:
+                    Anwar
+
+    🎯 Mini Practice
+    import pandas as pd
+
+    data = {
+        "Name": ["A", "B", "C", "D"],
+        "Marks": [80, 45, 90, 60]
+    }
+
+    df = pd.DataFrame(data)
+
+    # Marks > 50
+    print(df[df["Marks"] > 50])
+
+    # শুধু Name column
+    print(df["Name"])
+    ⚠️ Common Mistake
+
+    ❌ ভুল:
+
+    df["Name", "Age"]
+
+    ✔️ ঠিক:
+
+    df[["Name", "Age"]]
+
+
+    📌 Summary
+    df["col"] → column
+    df.loc[] → label-based
+    df.iloc[] → index-based
+    condition → filtering
+
+
+
+    Note:
+    “What is the difference between loc and iloc in pandas?”
+
+    🔹 loc vs iloc (Main Idea)
+
+        👉 দুটোই Pandas DataFrame থেকে data access করার জন্য ব্যবহার হয়
+
+        বিষয়	    loc         	    iloc
+        কাজ	    label দিয়ে access	index (number) দিয়ে access
+        input	 row/column name	 row/column position
+        type	label-based	          position-based
+
+    🔹 Example DataFrame
+                import pandas as pd
+
+                data = {
+                    "Name": ["Anwar", "Rahim", "Karim"],
+                    "Age": [22, 25, 23]
+                }
+                df = pd.DataFrame(data, index=["a", "b", "c"])
+
+    🔹 1. loc (label দিয়ে)
+                df.loc["a"]
+
+                👉 Output:
+
+                Name    Anwar
+                Age        22
+
+                👉 এখানে "a" হলো row label
+
+    🔹 2. iloc (index number দিয়ে)
+                df.iloc[0]
+
+                👉 Output:
+
+                Name    Anwar
+                Age        22
+
+                👉 এখানে 0 হলো position (index number)
