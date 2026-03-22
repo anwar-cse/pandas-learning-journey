@@ -1,0 +1,122 @@
+File Handling (CSV, Excel Read/Write)
+    📌 1. CSV file read করা ⭐
+            import pandas as pd
+
+            df = pd.read_csv("data.csv")
+            print(df.head())
+
+    👉 data.csv = file name
+
+            Note:
+                 CSV file কিভাবে read করতে হয় (pandas দিয়ে)?
+
+                        📌 CSV file read করা
+                        import pandas as pd
+
+                        df = pd.read_csv("data.csv")
+                        print(df.head())
+                        🔍 Breakdown
+                        ✅ import pandas as pd
+
+                        👉 pandas library import করা (shortcut name pd)
+
+                        ✅ pd.read_csv("data.csv")
+
+                        👉 CSV file read করে DataFrame বানায়
+
+                        👉 এখানে "data.csv" = amar file এর নাম
+                        👉 file টা same folder-এ থাকতে হবে (না হলে path দিতে হবে)
+
+                        ✅ df.head()
+
+                        👉 প্রথম ৫টা row দেখায়
+
+                        👉 output example:
+
+                        Name   Age   City
+                        A      20    Dhaka
+                        B      22    Sylhet
+                        C      21    Chittagong
+                        📂 যদি file অন্য folder-এ থাকে
+                        df = pd.read_csv("C:/Users/Anwar/Desktop/data.csv")
+
+                        👉 এটাকে বলে file path
+
+                        🎯 useful variations
+                        🔹 1. সব data দেখতে
+                                            print(df)
+                        🔹 2. নির্দিষ্ট column দেখতে
+                                            print(df["Name"])
+                        🔹 3. info দেখতে
+                                            print(df.info())
+                        ⚠️ common error
+
+                        👉 ❌ FileNotFoundError
+                                    কারণ:
+
+                                    file path ভুল
+                                    file same folder-এ নেই
+
+                        👉 read_csv() → CSV file read করে
+                        👉 head() → first 5 rows দেখায়
+
+    📌 2. Excel file read করা
+                    df = pd.read_excel("data.xlsx")
+                    print(df.head())
+
+                    👉 Excel এর জন্য install লাগতে পারে:
+                                                       pip install openpyxl
+                                                       
+    📌 3. নির্দিষ্ট column read করা
+                df = pd.read_csv("data.csv", usecols=["Name", "Age"])
+    
+    📌 4. Row limit দিয়ে read
+                df = pd.read_csv("data.csv", nrows=5)
+    
+    📌 5. CSV file write করা (save) ⭐
+                df.to_csv("output.csv", index=False)
+
+            👉 index=False দিলে extra index column আসবে না
+
+    📌 6. Excel file write
+            df.to_excel("output.xlsx", index=False)
+    
+    📌 7. File path use করা
+        👉 Same folder হলে:
+        pd.read_csv("data.csv")
+        👉 Different folder:
+        pd.read_csv("C:/Users/Anwar/Desktop/data.csv")
+
+    📌 8. Large file handle (important)
+        df = pd.read_csv("data.csv", chunksize=1000)
+
+    👉 বড় file ছোট ছোট chunk এ load হবে
+
+    🎯 Mini Practice
+                import pandas as pd
+
+                # read
+                df = pd.read_csv("data.csv")
+
+                # show
+                print(df.head())
+
+                # save
+                df.to_csv("new_data.csv", index=False)
+
+    ⚠️ Real Life Use
+            Kaggle dataset load করা
+            Excel report analyze করা
+            Clean data save করা
+                NOte:
+                    🌐 Kaggle কী?
+                        👉 Kaggle হলো একটা online platform
+                        👉 যেখানে Data Science, Machine Learning, AI শেখা যায়
+                        
+    👉 ML project এ 90% time এই কাজ 😄
+
+    📌 Summary
+    read_csv() → CSV read
+    read_excel() → Excel read
+    to_csv() → save CSV
+    to_excel() → save Excel
