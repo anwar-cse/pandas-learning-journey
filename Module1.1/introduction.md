@@ -1,5 +1,5 @@
-Pandas কি + Install + Import
-📌 Pandas কি?
+# Pandas কি + Install + Import
+ Pandas কি?
 
     Pandas হলো Python-এর একটি লাইব্রেরি, যা দিয়ে আমরা—
 
@@ -7,48 +7,48 @@ Pandas কি + Install + Import
                             Data clean করতে পারি
                             Data analyze করতে পারি
 
-    👉 সহজভাবে:
+ সহজভাবে:
     Pandas = Data নিয়ে কাজ করার টুল
 
-📌 Install করা
+ Install করা
 
     যদি install না থাকে, তাহলে:  
                             pip install pandas
 
-🔹 pip কী?
+ pip কী?
 
     pip হলো Python-এর একটি package manager।
-    👉 Python-এ নতুন library বা package install করার জন্য pip ব্যবহার করা হয়।
+    Python-এ নতুন library বা package install করার জন্য pip ব্যবহার করা হয়।
 
-🔹 pip এর কাজ কী?
+ pip এর কাজ কী?
 
     pip দিয়ে তুমি—
 
-    📦 library install করতে পারো
-    🔄 library update করতে পারো
-    ❌ library uninstall করতে পারো
+     library install করতে পারো
+     library update করতে পারো
+     library uninstall করতে পারো
 
-🔹 আরও কিছু pip কমান্ড
+ আরও কিছু pip কমান্ড
 
     pip install numpy      # numpy install
     pip uninstall pandas   # pandas delete
     pip list               # সব installed package দেখাবে
     pip install --upgrade pandas  # update করবে
 
-🔹 pip কোথা থেকে package আনে?
+ pip কোথা থেকে package আনে?
 
     pip package download করে PyPI (Python Package Index) থেকে
-    👉 এটা একটা online store এর মতো, যেখানে হাজার হাজার Python library আছে।
+     এটা একটা online store এর মতো, যেখানে হাজার হাজার Python library আছে।
 
-👉 pip = Python এর App store
+ pip = Python এর App store
 
 
-📌 Import করা
+ Import করা
     import pandas as pd
 
-    👉 এখানে pd হচ্ছে shortcut (সবাই এটা ব্যবহার করে)
+     এখানে pd হচ্ছে shortcut (সবাই এটা ব্যবহার করে)
 
-📌 Pandas এর ২টা main data structure
+ Pandas এর ২টা main data structure
     1. Series (1D)
 
         একটা লিস্টের মতো
@@ -67,18 +67,18 @@ Pandas কি + Install + Import
         What is a Series in pandas?
 
         Series হলো Pandas এর একটি 1-dimensional (এক লাইনের) data structure।
-        👉 এটা একটা list + index এর combination
+         এটা একটা list + index এর combination
         
-        🔹 এখানে কী হচ্ছে?
+         এখানে কী হচ্ছে?
                     data → একটি list
                     pd.Series(data) → list কে Series বানাচ্ছে
                     left side (0,1,2,3) → index
                     right side (10,20,30,40) → data/value
 
-            🔹 Series এর গঠন:
-                            👉 Series = Index + Value
+             Series এর গঠন:
+                             Series = Index + Value
             
-            🔹 নিজের index দিতে পারো:
+             নিজের index দিতে পারো:
                     s = pd.Series(data, index=['a', 'b', 'c', 'd'])
                     print(s)
                 output:
@@ -87,7 +87,7 @@ Pandas কি + Install + Import
                         c    30
                         d    40
 
-2. DataFrame (2D) ⭐ (সবচেয়ে important)
+    2. DataFrame (2D)  
 
     Excel table এর মতো
 
@@ -100,44 +100,44 @@ Pandas কি + Install + Import
 
             print(df)
 
-        👉 Output:
+         Output:
                         Name  Age
                     0  Anwar   22
                     1  Rahim   25
                     2  Karim   23
 
-🔹 DataFrame কী?
+ DataFrame কী?
 
     DataFrame হলো Pandas এর সবচেয়ে গুরুত্বপূর্ণ data structure।
 
-    👉 এটা হলো 2-dimensional (row + column) টেবিল
-    👉 অনেকটা Excel sheet এর মতো
+     এটা হলো 2-dimensional (row + column) টেবিল
+     অনেকটা Excel sheet এর মতো
 
-            🔹 এখানে কী হচ্ছে?
+             এখানে কী হচ্ছে?
                         "Name" → একটি column
                         "Age" → আরেকটি column
                         প্রতিটি row = একজন person
-                        👉 index (0,1,2) → row number
-                        👉 column (Name, Age) → data category
+                         index (0,1,2) → row number
+                         column (Name, Age) → data category
 
-            🔹 কিছু useful কাজ
+             কিছু useful কাজ
                     print(df["Name"])   # শুধু Name column
                     print(df.head())   # প্রথম ৫টা row
                     print(df.shape)    # row, column count
 
                     Explain:
-                        🔹 1. df["Name"] কী?
-                            👉 এটা দিয়ে **Pandas DataFrame থেকে একটি নির্দিষ্ট column নেওয়া হয়।
-                        🔹 2. df.head() কী?
-                            👉 এটা DataFrame এর প্রথম ৫টা row দেখায়
-                            👉 default = ৫টা row
-                            👉 চাইলে তুমি নিজে দিতে পারো:
+                         1. df["Name"] কী?
+                             এটা দিয়ে **Pandas DataFrame থেকে একটি নির্দিষ্ট column নেওয়া হয়।
+                         2. df.head() কী?
+                             এটা DataFrame এর প্রথম ৫টা row দেখায়
+                             default = ৫টা row
+                             চাইলে তুমি নিজে দিতে পারো:
                                             df.head(2)   # প্রথম ২টা row
-                        🔹 3. df.shape কী?
-                        👉 এটা DataFrame এর size (row, column) দেখায়
+                         3. df.shape কী?
+                            এটা DataFrame এর size (row, column) দেখায়
 
 
-    📌 Summary
+     Summary
                 Pandas = Data handling library
                 Series = 1D data
                 DataFrame = 2D table (সবচেয়ে বেশি ব্যবহার হয়)
